@@ -31,16 +31,10 @@ public class ReviewService {
     public Review createReview(ReviewRequestDTO requestDTO) {
         Review review = Review.from(requestDTO);
         reviewRepository.insert(review);
-        mongoTemplate.updateFirst(
-                Query.query(Criteria.where(Movie.MOVIE_ID).is(requestDTO.getMovieId())),
-                new Update().set(Movie.SCORE, getAverageScoreForMovie(requestDTO.getMovieId()))
-                        .set(AuditableEntity.UPDATED_TIME, System.currentTimeMillis()),
-                Movie.class
-        );
         return review;
     }
 
-    private int getAverageScoreForMovie(String movieId) {
+    public int getAverageScoreForMovie(String movieId) {
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(Criteria.where(Review.MOVIE_ID).is(movieId)),
                 Aggregation.group().avg(Review.SCORE).as("averageScore"),
