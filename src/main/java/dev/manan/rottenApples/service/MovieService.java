@@ -3,7 +3,6 @@ package dev.manan.rottenApples.service;
 import dev.manan.rottenApples.entity.Movie;
 import dev.manan.rottenApples.repo.MovieRepository;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Optional<Movie> fetchMovieById(String imdbId) {
-        return movieRepository.findByImdbId(imdbId);
+    public Optional<Movie> fetchMovieById(String movieId) {
+        return movieRepository.findByMovieId(movieId);
     }
 }
