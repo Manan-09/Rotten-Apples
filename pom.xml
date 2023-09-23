@@ -47,6 +47,12 @@
 			<artifactId>spring-dotenv</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.12.537</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

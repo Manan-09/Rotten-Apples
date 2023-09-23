@@ -5,10 +5,8 @@ import dev.manan.rottenApples.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +24,12 @@ public class MovieController {
     }
 
     @GetMapping("/{movieId}")
-    public ResponseEntity<Optional<Movie>> fetchMovieById(@PathVariable String movieId) {
+    public ResponseEntity<Movie> fetchMovieById(@PathVariable String movieId) {
         return ResponseEntity.ok(movieService.fetchMovieById(movieId));
+    }
+
+    @PostMapping("/{movieId}/upload/poster")
+    public ResponseEntity<Movie> uploadMoviePosterImage(@PathVariable String movieId, @RequestParam("file") MultipartFile file) {
+        return ResponseEntity.ok(movieService.uploadPoster(movieId, file));
     }
 }

@@ -13,7 +13,7 @@ public class AuditableEntity {
     protected Long createdTime;
     protected Long updatedTime;
 
-    protected void initializeAuditFields() {
+    public void initializeAuditFields() {
         Long currentTime = System.currentTimeMillis();
         if(isNull(createdTime)) {
             createdTime = currentTime;

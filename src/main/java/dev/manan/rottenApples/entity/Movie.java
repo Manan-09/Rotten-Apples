@@ -30,4 +30,5 @@ public class Movie extends AuditableEntity{
 
     public final static String MOVIE_ID = "movieId";
     public final static String SCORE = "score";
+    public final static String POSTER = "poster";
 }
