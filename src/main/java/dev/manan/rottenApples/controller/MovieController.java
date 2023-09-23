@@ -3,13 +3,12 @@ package dev.manan.rottenApples.controller;
 import dev.manan.rottenApples.entity.Movie;
 import dev.manan.rottenApples.service.MovieService;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +28,18 @@ public class MovieController {
     }
 
     @PostMapping("/{movieId}/upload/poster")
-    public ResponseEntity<Movie> uploadMoviePosterImage(@PathVariable String movieId, @RequestParam("file") MultipartFile file) {
-        return ResponseEntity.ok(movieService.uploadPoster(movieId, file));
+    public ResponseEntity<Movie> uploadMoviePosterImage(@PathVariable String movieId, @RequestParam("file") MultipartFile file) throws Exception {
+        return ResponseEntity.ok(movieService.uploadPosterImage(movieId, file));
+    }
+
+    @GetMapping("/asset/{key}")
+    public ResponseEntity<URL> fetchMovieAssetByKey(@PathVariable String key) throws Exception {
+        return ResponseEntity.ok(movieService.generatePresignedUrlForAsset(key));
+    }
+
+    @DeleteMapping("/asset/{key}")
+    public ResponseEntity<String> deleteMovieAssetByKey(@PathVariable String key) throws Exception {
+        movieService.deleteAsset(key);
+        return ResponseEntity.ok("SUCCESS");
     }
 }
