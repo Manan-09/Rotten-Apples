@@ -2,6 +2,7 @@ package dev.manan.rottenApples.controller;
 
 import dev.manan.rottenApples.entity.Movie;
 import dev.manan.rottenApples.service.MovieService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
