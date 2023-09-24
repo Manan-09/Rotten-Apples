@@ -38,6 +38,7 @@ public class Movie extends AuditableEntity{
         movie.setGenres(requestDTO.getGenres());
         movie.setTrailerLink(requestDTO.getTrailerLink());
         movie.setReleaseDate(requestDTO.getReleaseDate());
+        movie.initializeAuditFields();
         return movie;
     }
 }
