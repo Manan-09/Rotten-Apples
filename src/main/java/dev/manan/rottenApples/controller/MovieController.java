@@ -1,6 +1,9 @@
 package dev.manan.rottenApples.controller;
 
+import dev.manan.rottenApples.dto.MovieRequestDTO;
+import dev.manan.rottenApples.dto.ReviewRequestDTO;
 import dev.manan.rottenApples.entity.Movie;
+import dev.manan.rottenApples.entity.Review;
 import dev.manan.rottenApples.service.MovieService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,11 @@ public class MovieController {
     @GetMapping("/{movieId}")
     public ResponseEntity<Movie> fetchMovieById(@PathVariable String movieId) {
         return ResponseEntity.ok(movieService.fetchMovieById(movieId));
+    }
+
+    @PostMapping()
+    public ResponseEntity<Movie> createMovie(@RequestBody MovieRequestDTO requestDTO) {
+        return ResponseEntity.ok(movieService.createMovie(requestDTO));
     }
 
     @PostMapping("/{movieId}/upload/poster")

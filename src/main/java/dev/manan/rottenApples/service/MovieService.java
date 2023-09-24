@@ -1,5 +1,6 @@
 package dev.manan.rottenApples.service;
 
+import dev.manan.rottenApples.dto.MovieRequestDTO;
 import dev.manan.rottenApples.entity.Movie;
 import dev.manan.rottenApples.repo.MovieRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,10 @@ public class MovieService {
 
     public Movie fetchMovieById(String movieId) {
         return movieRepository.findByMovieId(movieId).orElseThrow();
+    }
+
+    public Movie createMovie(MovieRequestDTO movieRequestDTO) {
+        return movieRepository.insert(Movie.from(movieRequestDTO));
     }
 
     public Movie uploadPosterImage(String movieId, MultipartFile file) throws Exception {

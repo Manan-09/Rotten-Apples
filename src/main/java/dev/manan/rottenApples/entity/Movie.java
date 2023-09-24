@@ -1,6 +1,7 @@
 package dev.manan.rottenApples.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import dev.manan.rottenApples.dto.MovieRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,17 +19,25 @@ import java.util.List;
 @Document(collection = "movies")
 public class Movie extends AuditableEntity{
     @Id
-    private ObjectId id;
     private String movieId;
     private String title;
     private String releaseDate;
     private String trailerLink;
     private String poster;
     private List<String> genres;
-    private List<String> backdrops;
     private Integer score;
 
     public final static String MOVIE_ID = "movieId";
     public final static String SCORE = "score";
     public final static String POSTER = "poster";
+
+    public static Movie from(MovieRequestDTO requestDTO) {
+        Movie movie = new Movie();
+        movie.setMovieId(requestDTO.getMovieId());
+        movie.setTitle(requestDTO.getTitle());
+        movie.setGenres(requestDTO.getGenres());
+        movie.setTrailerLink(requestDTO.getTrailerLink());
+        movie.setReleaseDate(requestDTO.getReleaseDate());
+        return movie;
+    }
 }
