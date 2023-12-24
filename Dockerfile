@@ -15,4 +15,4 @@ COPY ./target/${JAR_FILE_NAME} app.jar
 EXPOSE ${SERVER_PORT}
 
 # Define the command to run your Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "RottenApples-0.0.1-SNAPSHOT.jar"]

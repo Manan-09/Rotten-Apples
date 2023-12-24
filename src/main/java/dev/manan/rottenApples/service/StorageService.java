@@ -30,8 +30,8 @@ public class StorageService {
             amazonS3.putObject(new PutObjectRequest(bucketName, key, file.getInputStream(), metadata)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
         } catch (Exception e) {
-            log.error("Error occured while uploading image with key {}", key, e);
-            throw new Exception("Error occured while uploading image");
+            log.error("Error occurred while uploading image with key {}", key, e);
+            throw new Exception("Error occurred while uploading image");
         }
     }
 

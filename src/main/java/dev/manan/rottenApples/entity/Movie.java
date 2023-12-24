@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class Movie extends AuditableEntity{
 
     public static Movie from(MovieRequestDTO requestDTO) {
         Movie movie = new Movie();
-        movie.setMovieId(requestDTO.getMovieId());
+        movie.setMovieId(UUID.randomUUID().toString());
         movie.setTitle(requestDTO.getTitle());
         movie.setGenres(requestDTO.getGenres());
         movie.setTrailerLink(requestDTO.getTrailerLink());

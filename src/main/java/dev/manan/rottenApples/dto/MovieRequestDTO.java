@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieRequestDTO {
-    private String movieId;
     private String title;
     private String releaseDate;
     private String trailerLink;

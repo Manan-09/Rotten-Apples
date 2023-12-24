@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class Review extends AuditableEntity{
     @Id
     private String id;
+    @Indexed
     private String movieId;
     private String body;
     private Integer score;
