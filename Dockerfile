@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy all JAR files from the target directory into the container
-COPY target/*.jar app.jar
+COPY ./target/*.jar app.jar
 
 # Define environment variable for the server port
 ENV SERVER_PORT 8080
