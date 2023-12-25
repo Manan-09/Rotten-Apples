@@ -8,10 +8,9 @@ WORKDIR /app
 COPY ./target/*.jar app.jar
 
 # Define environment variable for the server port
-ENV SERVER_PORT 8080
 
 # Expose the port that your Spring Boot application listens on
-EXPOSE ${SERVER_PORT}
+EXPOSE 8080
 
 # Define the command to run your Spring Boot application
 CMD ["java", "-jar", "app.jar"]
